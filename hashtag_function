@@ -1,0 +1,23 @@
+/* get_hashtags($string, $str = 1)
+*  will return the array of all the hash tags in the string
+*/
+function get_hashtags($string, $str = 1) {
+    preg_match_all('/#(\w+)/',$string,$matches);
+    $i = 0;
+    if ($str) {
+        foreach ($matches[1] as $match) {
+            $count = count($matches[1]);
+            $keywords .= "$match";
+            $i++;
+            if ($count > $i) $keywords .= ", ";
+        }
+    } else {
+        foreach ($matches[1] as $match) {
+            $keyword[] = $match;
+        }
+        $keywords = $keyword;
+    }
+    return $keywords;
+}
+
+echo get_hashtags($string);
